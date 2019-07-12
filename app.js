@@ -44,6 +44,11 @@ function(req,res){
     res.redirect('/');
     console.log(newOrder);
 })
+app.post('/users/update/orderName', function(req,res){
+    console.log(req.params)
+    console.log(req.body.nameUpdate +" : ")
+    res.redirect('/')
+})
 
 app.delete('/users/delete/:id',function(req,res){
     console.log('button pressed: '+req.params.id)
