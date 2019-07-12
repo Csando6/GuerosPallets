@@ -2,13 +2,13 @@
     <h1> <% console.log(users)%></h1>
     <ul>
     <% users.forEach( function(user){ %>
-        <li> <a href='#' class='deleteUser' data-id=<%= user._id %> </a>delete</a></li>
+        <li><h2><%= user.order_name%> - <a href='#' class='deleteUser' data-id=<%= user._id %> </a>delete</a> </h2> </li>
         <ul>
-            <li> id: <%= user._id %></li>
-            <li> <%= user.order_name%> <form method='POST' action='users/update/orderName/' data-id=<%= user._id %>> <input type='text' name='nameUpdate'><input type='submit' value='submit'></form> </li>
-            <li> <%= user.order_size%> <input type='text'> <a href='#' class='updateSize'> update</a></li>
-            <li> <%= user.order_quant%> <input type='text'> <a href='#' class='updateQuant'> update</a></li>
-            <li> <%= user.order_truck%> <input type='text'> <a href='#' class='updateTruck'> update</a></li>
+            <!-- <li> id: <%= user._id %></li> -->
+            <li> <form method='POST' action=<%= 'users/update/orderName/'+ user._id %> > Corp: <%= user.order_name%> <input type='text' name='nameUpdate'><input type='submit' value='update'></form> </li>
+            <li> <form method='POST' action=<%= 'users/update/orderSize/'+ user._id %> > Size: <%= user.order_size%> <input type='text' name='sizeUpdate'><input type='submit' value='update'></form></li>
+            <li> <form method='POST' action=<%= 'users/update/orderQuant/'+ user._id %> > Quant: <%= user.order_quant%> <input type='text' name='quantUpdate'><input type='submit' value='update'></form></li>
+            <li> <form method='POST' action=<%= 'users/update/orderTruck/'+ user._id %> > Truck #: <%= user.order_truck%> <input type='text' name='truckUpdate'><input type='submit' value='update'></form></li>
         </ul>
         <br>
     <% })%>

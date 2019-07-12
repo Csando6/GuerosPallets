@@ -44,10 +44,24 @@ function(req,res){
     res.redirect('/');
     console.log(newOrder);
 })
-app.post('/users/update/orderName', function(req,res){
-    console.log(req.params)
-    console.log(req.body.nameUpdate +" : ")
-    res.redirect('/')
+
+app.post('/users/update/orderName/:id', function(req,res){
+    //console.log(req.body.nameUpdate +" : "+req.params.id+"\n")
+    db.order.update({_id:mongojs.ObjectId(req.params.id)},{$set:{order_name:req.body.nameUpdate} } )
+    res.redirect('/');
+})
+app.post('/users/update/orderSize/:id', function(req,res){
+    
+    db.order.update({_id:mongojs.ObjectId(req.params.id)},{$set:{order_size:req.body.sizeUpdate} } )
+    res.redirect('/');
+})
+app.post('/users/update/orderQuant/:id', function(req,res){
+    db.order.update({_id:mongojs.ObjectId(req.params.id)},{$set:{order_quant:req.body.quantUpdate} } )
+    res.redirect('/');
+})
+app.post('/users/update/orderTruck/:id', function(req,res){
+    db.order.update({_id:mongojs.ObjectId(req.params.id)},{$set:{order_truck:req.body.truckUpdate} } )
+    res.redirect('/');
 })
 
 app.delete('/users/delete/:id',function(req,res){
